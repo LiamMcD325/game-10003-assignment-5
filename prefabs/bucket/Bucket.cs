@@ -21,24 +21,24 @@ public partial class Bucket : Area2D
 
 		scoreLabel.Text = $"{BucketScore}";
 
-        BodyEntered += Bucket_BodyEntered;
+		BodyEntered += Bucket_BodyEntered;
 	}
 
-    private void Bucket_BodyEntered(Node2D body)
-    {
+	private void Bucket_BodyEntered(Node2D body)
+	{
 		// we ONLY want to increase the score when a player disk falls in the bucket
 		if (body.IsInGroup("player"))
-        {
+		{
 			PlinkoLevelNode.IncreaseScore(BucketScore);
 
 			Player playerDisk = (Player)body;
 			playerDisk.Dead = true;
-        }
-    }
+		}
+	}
 
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
 	{
 	}
 }

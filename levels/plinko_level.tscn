@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cyy8uc4m1fvy6"]
+[gd_scene load_steps=16 format=3 uid="uid://cyy8uc4m1fvy6"]
 
 [ext_resource type="PackedScene" uid="uid://ca3o3a5grroel" path="res://prefabs/row/row.tscn" id="1_ahvb8"]
 [ext_resource type="Script" uid="uid://c6ids5c1qtj8g" path="res://levels/PlinkoLevel.cs" id="1_lxrb4"]
@@ -7,7 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://cdygi6j0dadwx" path="res://prefabs/player/player.tscn" id="4_20e0n"]
 [ext_resource type="PackedScene" uid="uid://byfflpg32m2op" path="res://prefabs/bucket/bucket.tscn" id="4_o0fae"]
 [ext_resource type="AudioStream" uid="uid://bmwof6460xb4i" path="res://sounds/fall.mp3" id="7_al8p8"]
+[ext_resource type="AudioStream" uid="uid://x80lj240xr4m" path="res://sounds/100.mp3" id="7_ybmbn"]
+[ext_resource type="AudioStream" uid="uid://copv7q055oytq" path="res://sounds/500.mp3" id="8_fcklk"]
 [ext_resource type="AudioStream" uid="uid://b8y882wrqvm4w" path="res://sounds/bgm.mp3" id="8_r2c0j"]
+[ext_resource type="AudioStream" uid="uid://bjx34mr1qna0j" path="res://sounds/1000.mp3" id="9_2wy0t"]
+[ext_resource type="AudioStream" uid="uid://bixnf3e8qukwi" path="res://sounds/5000.mp3" id="10_c2up8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_20e0n"]
 bounce = 0.36
@@ -325,35 +329,56 @@ position = Vector2(40, 784)
 BucketScore = 100
 PlinkoLevelNode = NodePath("../..")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ScoreBuckets/Bucket"]
+stream = ExtResource("7_ybmbn")
+
 [node name="Bucket2" parent="ScoreBuckets" node_paths=PackedStringArray("PlinkoLevelNode") instance=ExtResource("4_o0fae")]
 position = Vector2(128, 784)
 BucketScore = 500
 PlinkoLevelNode = NodePath("../..")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ScoreBuckets/Bucket2"]
+stream = ExtResource("8_fcklk")
 
 [node name="Bucket3" parent="ScoreBuckets" node_paths=PackedStringArray("PlinkoLevelNode") instance=ExtResource("4_o0fae")]
 position = Vector2(216, 784)
 BucketScore = 1000
 PlinkoLevelNode = NodePath("../..")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ScoreBuckets/Bucket3"]
+stream = ExtResource("9_2wy0t")
+
 [node name="Bucket4" parent="ScoreBuckets" node_paths=PackedStringArray("PlinkoLevelNode") instance=ExtResource("4_o0fae")]
 position = Vector2(312, 784)
 BucketScore = 5000
 PlinkoLevelNode = NodePath("../..")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ScoreBuckets/Bucket4"]
+stream = ExtResource("10_c2up8")
 
 [node name="Bucket5" parent="ScoreBuckets" node_paths=PackedStringArray("PlinkoLevelNode") instance=ExtResource("4_o0fae")]
 position = Vector2(408, 784)
 BucketScore = 1000
 PlinkoLevelNode = NodePath("../..")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ScoreBuckets/Bucket5"]
+stream = ExtResource("9_2wy0t")
+
 [node name="Bucket6" parent="ScoreBuckets" node_paths=PackedStringArray("PlinkoLevelNode") instance=ExtResource("4_o0fae")]
 position = Vector2(496, 784)
 BucketScore = 500
 PlinkoLevelNode = NodePath("../..")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ScoreBuckets/Bucket6"]
+stream = ExtResource("8_fcklk")
+
 [node name="Bucket7" parent="ScoreBuckets" node_paths=PackedStringArray("PlinkoLevelNode") instance=ExtResource("4_o0fae")]
 position = Vector2(584, 784)
 BucketScore = 100
 PlinkoLevelNode = NodePath("../..")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ScoreBuckets/Bucket7"]
+stream = ExtResource("7_ybmbn")
 
 [node name="PlayerDisks" type="Node2D" parent="."]
 
