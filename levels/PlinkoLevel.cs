@@ -7,6 +7,9 @@ public partial class PlinkoLevel : Node2D
 	// this is the value of the current round's score
 	public int Score = 0;
 
+	//This 
+	public int Turn; 
+
 	[Export]
 	public Label ScoreValue;
 
@@ -25,9 +28,11 @@ public partial class PlinkoLevel : Node2D
 	[Export]
 	public Player FirstPlayer;
 
+	[Export]
+	public AudioStreamPlayer AudioStreamPlayer;
 
 	// internal variables
-    bool EnableRespawn = false;
+	bool EnableRespawn = false;
 	Vector2 InitialPosition;
 
 
@@ -47,39 +52,47 @@ public partial class PlinkoLevel : Node2D
 		RespawnMessage.Visible = EnableRespawn;
 
 		// spawn a new player
-        if (Input.IsActionJustPressed("drop_disk") && EnableRespawn)
-        {
+		if (Input.IsActionJustPressed("drop_disk") && EnableRespawn)
+		{
 			// spawning a new player here is OK because physics step hasn't run
 			SpawnNewPlayer();
 
+
+
+			
+
+
 			EnableRespawn = false;
-        }
-    }
+		}
+	}
 
 	void SpawnNewPlayer()
-    {
+	{
 		Player newPlayer = PlayerScene.Instantiate<Player>();
 		newPlayer.Position = InitialPosition;
 
 		// attach the player to the camera
 		newPlayer.GameCamera = GameCamera;
 
-        PlayerDisks.AddChild(newPlayer);
-    }
+		PlayerDisks.AddChild(newPlayer);
+	}
 
 	// remember: IncreaseScore() only gets called when the player body enters the "Bucket"
 	public void IncreaseScore(int scoreIncrease)
 	{
 		// you can only increase the score if Enable Respawn is false
 		if (!EnableRespawn)
-        {
-            Score += scoreIncrease;
-            EnableRespawn = true;
-        }
+		{
+			Score += scoreIncrease;
+			EnableRespawn = true;
+		}
 
 		// as exercise done in class, if we try to spawn the new player here
 		// it creates problems. we MUST use CallDeferred()
 		//SpawnNewPlayer();
 		//CallDeferred("SpawnNewPlayer");
 	}
+
+
+
 }
